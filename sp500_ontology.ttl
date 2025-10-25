@@ -1,0 +1,198 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sp500-ont: <http://example.org/sp500-ontology#> .
+
+# --- Clases ---
+sp500-ont:Compañía
+    a owl:Class ;
+    rdfs:label "Compañía" .
+
+sp500-ont:SectorEconómico
+    a owl:Class ;
+    rdfs:label "Sector Económico" .
+
+sp500-ont:ÍndiceBursátil
+    a owl:Class ;
+    rdfs:label "Índice Bursátil" .
+
+sp500-ont:Ejecutivo
+    a owl:Class ;
+    rdfs:label "Ejecutivo" .
+
+sp500-ont:IndicadorMacroeconómico
+    a owl:Class ;
+    rdfs:label "Indicador Macroeconómico" .
+
+sp500-ont:ReporteFinanciero
+    a owl:Class ;
+    rdfs:label "Reporte Financiero" .
+
+# --- Propiedades de Objeto (Relaciones) ---
+sp500-ont:perteneceAlSector
+    a owl:ObjectProperty ;
+    rdfs:label "pertenece al sector" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range sp500-ont:SectorEconómico .
+
+sp500-ont:esConstituyenteDe
+    a owl:ObjectProperty ;
+    rdfs:label "es constituyente de" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range sp500-ont:ÍndiceBursátil .
+
+sp500-ont:tieneCEO
+    a owl:ObjectProperty ;
+    rdfs:label "tiene CEO" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range sp500-ont:Ejecutivo .
+
+sp500-ont:esSensibleA
+    a owl:ObjectProperty ;
+    rdfs:label "es sensible a" ;
+    rdfs:domain sp500-ont:SectorEconómico ;
+    rdfs:range sp500-ont:IndicadorMacroeconómico .
+
+# --- NUEVA PROPIEDAD DE OBJETO: tieneReporte ---
+sp500-ont:tieneReporte
+    a owl:ObjectProperty ;
+    rdfs:label "tiene reporte" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range sp500-ont:ReporteFinanciero .
+
+sp500-ont:reporteDe
+    a owl:ObjectProperty ;
+    rdfs:label "reporte de" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range sp500-ont:Compañía ;
+    owl:inverseOf sp500-ont:tieneReporte .
+
+# --- Propiedades de Dato (Compañía) ---
+sp500-ont:tickerSymbol
+    a owl:DatatypeProperty ;
+    rdfs:label "Ticker Symbol" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:nombreOficial
+    a owl:DatatypeProperty ;
+    rdfs:label "Nombre Oficial" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:resumenEmpresarial
+    a owl:DatatypeProperty ;
+    rdfs:label "Resumen Empresarial" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:sitioWeb
+    a owl:DatatypeProperty ;
+    rdfs:label "Sitio Web" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:anyURI .
+
+sp500-ont:numeroEmpleados
+    a owl:DatatypeProperty ;
+    rdfs:label "Número de Empleados" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:integer .
+
+sp500-ont:capitalizacionMercado
+    a owl:DatatypeProperty ;
+    rdfs:label "Capitalización de Mercado" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:long . # Usamos 'long' para números muy grandes
+
+sp500-ont:ratioPER
+    a owl:DatatypeProperty ;
+    rdfs:label "Ratio PER" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:decimal .
+
+sp500-ont:rentabilidadDividendo
+    a owl:DatatypeProperty ;
+    rdfs:label "Rentabilidad por Dividendo" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:decimal .
+
+sp500-ont:pais
+    a owl:DatatypeProperty ;
+    rdfs:label "País" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:ciudad
+    a owl:DatatypeProperty ;
+    rdfs:label "Ciudad" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+# --- Propiedades de Indicadores (ya existentes) ---
+sp500-ont:valor
+    a owl:DatatypeProperty ;
+    rdfs:label "Valor" ;
+    rdfs:domain sp500-ont:IndicadorMacroeconómico ;
+    rdfs:range xsd:decimal .
+
+sp500-ont:fecha
+    a owl:DatatypeProperty ;
+    rdfs:label "Fecha" ;
+    rdfs:domain sp500-ont:IndicadorMacroeconómico ;
+    rdfs:range xsd:date .
+
+# --- NUEVAS PROPIEDADES DE DATO (Reporte Financiero) ---
+sp500-ont:fechaReporte
+    a owl:DatatypeProperty ;
+    rdfs:label "Fecha del Reporte" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:date .
+
+sp500-ont:esDeTipo
+    a owl:DatatypeProperty ;
+    rdfs:label "Tipo de Reporte" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:string . # "Annual" o "Quarterly"
+
+sp500-ont:ingresosTotales
+    a owl:DatatypeProperty ;
+    rdfs:label "Ingresos Totales" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:beneficioBruto
+    a owl:DatatypeProperty ;
+    rdfs:label "Beneficio Bruto" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:ebit
+    a owl:DatatypeProperty ;
+    rdfs:label "EBIT" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:beneficioNeto
+    a owl:DatatypeProperty ;
+    rdfs:label "Beneficio Neto" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:activosTotales
+    a owl:DatatypeProperty ;
+    rdfs:label "Activos Totales" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:pasivosTotales
+    a owl:DatatypeProperty ;
+    rdfs:label "Pasivos Totales" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:flujoDeCajaOperativo
+    a owl:DatatypeProperty ;
+    rdfs:label "Flujo de Caja Operativo" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .

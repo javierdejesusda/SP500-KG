@@ -1,0 +1,7 @@
+rdflib
+yfinance
+pandas-datareader
+pandas
+SPARQLWrapper
+requests
+lxml

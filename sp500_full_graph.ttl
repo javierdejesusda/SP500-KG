@@ -1,0 +1,477 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp500-data: <http://example.org/sp500-data/> .
+@prefix sp500-ont: <http://example.org/sp500-ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sp500-data:CPIAUCSL a sp500-ont:IndicadorMacroeconómico ;
+    rdfs:label "Inflacion_CPI" ;
+    sp500-ont:fecha "2025-09-01"^^xsd:date ;
+    sp500-ont:valor 324.368 .
+
+sp500-ont:activosTotales a owl:DatatypeProperty ;
+    rdfs:label "Activos Totales" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:beneficioBruto a owl:DatatypeProperty ;
+    rdfs:label "Beneficio Bruto" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:beneficioNeto a owl:DatatypeProperty ;
+    rdfs:label "Beneficio Neto" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:capitalizacionMercado a owl:DatatypeProperty ;
+    rdfs:label "Capitalización de Mercado" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:long .
+
+sp500-ont:ciudad a owl:DatatypeProperty ;
+    rdfs:label "Ciudad" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:ebit a owl:DatatypeProperty ;
+    rdfs:label "EBIT" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:esConstituyenteDe a owl:ObjectProperty ;
+    rdfs:label "es constituyente de" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range sp500-ont:ÍndiceBursátil .
+
+sp500-ont:esDeTipo a owl:DatatypeProperty ;
+    rdfs:label "Tipo de Reporte" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:string .
+
+sp500-ont:esSensibleA a owl:ObjectProperty ;
+    rdfs:label "es sensible a" ;
+    rdfs:domain sp500-ont:SectorEconómico ;
+    rdfs:range sp500-ont:IndicadorMacroeconómico .
+
+sp500-ont:fecha a owl:DatatypeProperty ;
+    rdfs:label "Fecha" ;
+    rdfs:domain sp500-ont:IndicadorMacroeconómico ;
+    rdfs:range xsd:date .
+
+sp500-ont:fechaReporte a owl:DatatypeProperty ;
+    rdfs:label "Fecha del Reporte" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:date .
+
+sp500-ont:flujoDeCajaOperativo a owl:DatatypeProperty ;
+    rdfs:label "Flujo de Caja Operativo" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:ingresosTotales a owl:DatatypeProperty ;
+    rdfs:label "Ingresos Totales" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:nombreOficial a owl:DatatypeProperty ;
+    rdfs:label "Nombre Oficial" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:numeroEmpleados a owl:DatatypeProperty ;
+    rdfs:label "Número de Empleados" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:integer .
+
+sp500-ont:pais a owl:DatatypeProperty ;
+    rdfs:label "País" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:pasivosTotales a owl:DatatypeProperty ;
+    rdfs:label "Pasivos Totales" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range xsd:long .
+
+sp500-ont:perteneceAlSector a owl:ObjectProperty ;
+    rdfs:label "pertenece al sector" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range sp500-ont:SectorEconómico .
+
+sp500-ont:ratioPER a owl:DatatypeProperty ;
+    rdfs:label "Ratio PER" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:decimal .
+
+sp500-ont:rentabilidadDividendo a owl:DatatypeProperty ;
+    rdfs:label "Rentabilidad por Dividendo" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:decimal .
+
+sp500-ont:reporteDe a owl:ObjectProperty ;
+    rdfs:label "reporte de" ;
+    rdfs:domain sp500-ont:ReporteFinanciero ;
+    rdfs:range sp500-ont:Compañía ;
+    owl:inverseOf sp500-ont:tieneReporte .
+
+sp500-ont:resumenEmpresarial a owl:DatatypeProperty ;
+    rdfs:label "Resumen Empresarial" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:sitioWeb a owl:DatatypeProperty ;
+    rdfs:label "Sitio Web" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:anyURI .
+
+sp500-ont:tickerSymbol a owl:DatatypeProperty ;
+    rdfs:label "Ticker Symbol" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range xsd:string .
+
+sp500-ont:tieneCEO a owl:ObjectProperty ;
+    rdfs:label "tiene CEO" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range sp500-ont:Ejecutivo .
+
+sp500-ont:valor a owl:DatatypeProperty ;
+    rdfs:label "Valor" ;
+    rdfs:domain sp500-ont:IndicadorMacroeconómico ;
+    rdfs:range xsd:decimal .
+
+sp500-data:A a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "41966567424"^^xsd:long ;
+    sp500-ont:ciudad "Santa Clara"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "Agilent Technologies"@en ;
+    sp500-ont:numeroEmpleados 18000 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Health_Care ;
+    sp500-ont:ratioPER 34.5864 ;
+    sp500-ont:rentabilidadDividendo 67.0 ;
+    sp500-ont:resumenEmpresarial "Agilent Technologies, Inc. provides application focused solutions to the life sciences, diagnostics, and applied chemical markets worldwide. The company operates in three segments: Life Sciences and Applied Markets, Diagnostics and Genomics, and Agilent CrossLab. The Life Sciences and Applied Markets segment offers liquid chromatography systems and components; liquid chromatography mass spectrometry systems; gas chromatography systems and components; gas chromatography mass spectrometry systems; inductively coupled plasma mass spectrometry instruments; atomic absorption instruments; microwave plasma-atomic emission spectrometry instruments; inductively coupled plasma optical emission spectrometry instruments; raman spectroscopy; laboratory software; information management and analytics; laboratory automation and robotic systems; dissolution testing; and vacuum pumps, and measurement technologies. This segment also offers GC and LC columns, sample preparation products, custom chemistries, and laboratory instrument supplies. The Diagnostics and Genomics segment provides genomics, contract manufacturing and research and development, pathology, companion diagnostics, reagent partnership, and biomolecular analysis businesses; and cell analysis plate based assays, flow cytometers, real-time cell analyzers, cell imaging systems, microplate readers, and related consumables. The Agilent CrossLab segment provides various services, including repairs, parts, maintenance, installations, training, compliance support, software as a service, asset management, and consulting services. The company markets its products through direct sales, distributors, resellers, manufacturer's representatives, and electronic commerce. Agilent Technologies, Inc. was incorporated in 1999 and is headquartered in Santa Clara, California."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.agilent.com> ;
+    sp500-ont:tickerSymbol "A" ;
+    sp500-ont:tieneCEO sp500-data:Mr_Padraig__McDonnell ;
+    sp500-ont:tieneReporte sp500-data:Report_A_2024-10-31 .
+
+sp500-data:ABBV a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "402757615616"^^xsd:long ;
+    sp500-ont:ciudad "North Chicago"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "AbbVie"@en ;
+    sp500-ont:numeroEmpleados 55000 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Health_Care ;
+    sp500-ont:ratioPER 108.5667 ;
+    sp500-ont:rentabilidadDividendo 288.0 ;
+    sp500-ont:resumenEmpresarial "AbbVie Inc., a research-based biopharmaceutical company, engages in the research and development, manufacture, commercialization, and sale of medicines and therapies worldwide. The company offers Humira, an injection for autoimmune and intestinal Behçet's diseases, generalized pustular psoriasis, and pyoderma gangrenosum; Skyrizi to treat autoimmune diseases, erythrodermic psoriasis, generalized pustular psoriasis, and palmoplantar pustulosis; Rinvoq to treat inflammatory diseases; Imbruvica for the treatment of adult patients with blood cancers; Venclexta/Venclyxto to treat blood cancers; Elahere to treat various cancer; and Epkinly to treat lymphoma. It also provides facial injectables, plastics and regenerative medicine, body contouring, and skincare products; botox therapeutic to treat neurologic diseases; Vraylar to treat schizophrenia, bipolar disorder, and depressive disorder; Duopa and Duodopa to treat Parkinson's disease; Ubrelvy to treat migraine; and Qulipta for episodic and chronic migraine, as well as other neuroscience products. In addition, the company offers Ozurdex for eye diseases; Lumigan/Ganfort and Alphagan/Combigan for the reduction of elevated intraocular pressure in patients with open angle glaucoma or ocular hypertension; Restasis to increase tear production; and other eye care products. Further, it provides Mavyret/Maviret to treat chronic hepatitis C virus genotype 1-6 infection; Creon, a pancreatic enzyme therapy; and Linzess/Constella to treat irritable bowel syndrome with constipation and chronic idiopathic constipation. The company was incorporated in 2012 and is headquartered in North Chicago, Illinois."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.abbvie.com> ;
+    sp500-ont:tickerSymbol "ABBV" ;
+    sp500-ont:tieneCEO sp500-data:Mr_Robert_A_Michael_CPA ;
+    sp500-ont:tieneReporte sp500-data:Report_ABBV_2024-12-31 .
+
+sp500-data:ABT a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "220777218048"^^xsd:long ;
+    sp500-ont:ciudad "North Chicago"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "Abbott Laboratories"@en ;
+    sp500-ont:numeroEmpleados 114000 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Health_Care ;
+    sp500-ont:ratioPER 15.9159 ;
+    sp500-ont:rentabilidadDividendo 186.0 ;
+    sp500-ont:resumenEmpresarial "Abbott Laboratories, together with its subsidiaries, discovers, develops, manufactures, and sells health care products worldwide. It operates in four segments: Established Pharmaceutical Products, Diagnostic Products, Nutritional Products, and Medical Devices. The company provides generic pharmaceuticals for the treatment of pancreatic exocrine insufficiency, irritable bowel syndrome or biliary spasm, intrahepatic cholestasis or depressive symptoms, gynecological disorder, hormone replacement therapy, dyslipidemia, hypertension, hypothyroidism, hypertriglyceridemia, Ménière's disease and vestibular vertigo, pain, fever, inflammation, and migraine, as well as provides anti-infective clarithromycin, influenza vaccine, and products to regulate physiological rhythm of the colon. It also offers laboratory and transfusion medicine systems in the areas of immunoassay, clinical chemistry, hematology, and transfusion serology testing; molecular diagnostics polymerase chain reaction instrument systems that automate the extraction, purification, and preparation of DNA and RNA from patient samples, and detect and measure infectious agents; point of care systems; cartridges for testing blood gas, chemistry, electrolytes, coagulation, and immunoassay; rapid diagnostics lateral flow testing products; molecular point-of-care testing for HIV, SARS-CoV-2, influenza A and B, RSV, and strep A; cardiometabolic test systems; and drug and alcohol test. In addition, the company provides pediatric and adult nutritional products and infant formula; rhythm management, electrophysiology, heart failure, vascular, and structural heart devices for the treatment of cardiovascular diseases; diabetes care products, such as glucose and blood glucose monitoring systems; and neuromodulation devices for the management of chronic pain and movement disorders. Abbott Laboratories was founded in 1888 and is based in North Chicago, Illinois."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.abbott.com> ;
+    sp500-ont:tickerSymbol "ABT" ;
+    sp500-ont:tieneCEO sp500-data:Mr_Robert_B_Ford ;
+    sp500-ont:tieneReporte sp500-data:Report_ABT_2024-12-31 .
+
+sp500-data:ACN a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "153577390080"^^xsd:long ;
+    sp500-ont:ciudad "Dublin"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "Accenture"@en ;
+    sp500-ont:numeroEmpleados 779000 ;
+    sp500-ont:pais "Ireland"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Information_Technology ;
+    sp500-ont:ratioPER 20.366 ;
+    sp500-ont:rentabilidadDividendo 263.0 ;
+    sp500-ont:resumenEmpresarial "Accenture plc provides strategy and consulting, industry X, song, and technology and operation services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It offers systems integration and application management; security; intelligent platform; infrastructure; software engineering; data, AI, cloud; and automation and global delivery services. The company also operates business processes for specific enterprise functions, including finance and accounting, sourcing and procurement, supply chain, marketing and sales, and human resources, as well as industry-specific services, such as platform trust and safety, banking, insurance, network and health services; and designs, manufactures, and assembles automation equipment, robotics, and other commercial hardware products. It serves communications, media, and technology; financial services; banking and capital markets, and insurance; health and public service; consumer goods, retail, travel services; industrial; life science; and chemicals, natural resources, energy, and utilities sectors. Accenture plc has collaboration with Amazon Web Services (AWS) to deliver transformative digital services to public sector, defense, and national security organizations. Accenture plc was founded in 1951 and is based in Dublin, Ireland."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.accenture.com> ;
+    sp500-ont:tickerSymbol "ACN" ;
+    sp500-ont:tieneCEO sp500-data:Ms_Julie_T_Spellman_Sweet_JD ;
+    sp500-ont:tieneReporte sp500-data:Report_ACN_2024-08-31 .
+
+sp500-data:ADBE a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "147983466496"^^xsd:long ;
+    sp500-ont:ciudad "San Jose"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "Adobe Inc."@en ;
+    sp500-ont:numeroEmpleados 30709 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Information_Technology ;
+    sp500-ont:ratioPER 22.0262 ;
+    sp500-ont:resumenEmpresarial "Adobe Inc. operates as a technology company worldwide. Its Digital Media segment offers products and services that enable individuals, teams, and enterprises to create, publish, and promote content; Document Cloud, a cloud-based document services platform; and Creative Cloud, a subscription service that allows subscribers to use its creative products and applications (apps) integrated with cloud-delivered services across various surfaces and platforms. This segment serves photographers, video editors, graphic and experience designers, game developers, content creators, students, marketers, knowledge workers, and consumers. The company's Digital Experience segment provides an integrated platform; and products, services, and solutions that enable brands and businesses to create, manage, execute, measure, monetize, and optimize customer experiences from analytics to commerce. This segment serves marketers, advertisers, agencies, publishers, merchandisers, merchants, web analysts, data scientists, developers, and executives across the C-suite. Its Publishing and Advertising segment offers e-learning, technical document publishing, web conferencing, document and forms platform, web application development, high-end printing, and Adobe Advertising solutions. It provides consulting, training, customer management, technical support, and learning services. The company offers its solutions to enterprise customers, and businesses and consumers; and licenses its products to end-user customers through app stores and website at adobe.com. It markets and distributes its products through distributors, retailers, software developers, mobile app stores, systems integrators, independent software vendors, value-added resellers, and original equipment and hardware manufacturers. The company was formerly known as Adobe Systems Incorporated and changed its name to Adobe Inc. in October 2018. Adobe Inc. was founded in 1982 and is headquartered in San Jose, California."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.adobe.com> ;
+    sp500-ont:tickerSymbol "ADBE" ;
+    sp500-ont:tieneCEO sp500-data:Mr_Shantanu__Narayen ;
+    sp500-ont:tieneReporte sp500-data:Report_ADBE_2024-11-30 .
+
+sp500-data:AES a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "10360321024"^^xsd:long ;
+    sp500-ont:ciudad "Arlington"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "AES Corporation"@en ;
+    sp500-ont:numeroEmpleados 9100 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Utilities ;
+    sp500-ont:ratioPER 11.1923 ;
+    sp500-ont:rentabilidadDividendo 484.0 ;
+    sp500-ont:resumenEmpresarial "The AES Corporation, together with its subsidiaries, operates as a power generation and utility company in the United States and internationally. The company owns and/or operates power plants to generate and sell power to customers, such as utilities, industrial users, and other intermediaries; owns and/or operates utilities to generate or purchase, distribute, transmit, and sell electricity to end-user customers in the residential, commercial, industrial, and governmental sectors; and generates and sells electricity on the wholesale market. It uses various fuels and technologies to generate electricity, such as coal, gas, hydro, wind, solar, and biomass, as well as renewables comprising energy storage and landfill gas. The company owns and/or operates a generation portfolio of approximately 32,109 megawatts and distributes power to 2.7 million customers. The company was formerly known as Applied Energy Services, Inc. and changed its name to The AES Corporation in April 2000. The AES Corporation was incorporated in 1981 and is headquartered in Arlington, Virginia."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.aes.com> ;
+    sp500-ont:tickerSymbol "AES" ;
+    sp500-ont:tieneCEO sp500-data:Mr_Andres_Ricardo_Gluski_Weilert_PhD ;
+    sp500-ont:tieneReporte sp500-data:Report_AES_2024-12-31 .
+
+sp500-data:AFL a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "57323237376"^^xsd:long ;
+    sp500-ont:ciudad "Columbus"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "Aflac"@en ;
+    sp500-ont:numeroEmpleados 12694 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Financials ;
+    sp500-ont:ratioPER 24.1396 ;
+    sp500-ont:rentabilidadDividendo 216.0 ;
+    sp500-ont:resumenEmpresarial "Aflac Incorporated, through its subsidiaries, provides supplemental health and life insurance products. The company operates in two segments, Aflac Japan and Aflac U.S. The Aflac Japan segment offers cancer, medical, nursing care, whole life, and GIFT insurance products, as well as WAYS and child endowment, and Tsumitasu insurance products in Japan. The Aflac U.S. segment provides accident, disability, cancer, critical illness, hospital indemnity, dental, vision, and life insurance products in the United States. The company sells its products through individual, independent corporate, and affiliated corporate agencies; banks; independent associates/career agents; and brokers. Aflac Incorporated was founded in 1955 and is based in Columbus, Georgia."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.aflac.com> ;
+    sp500-ont:tickerSymbol "AFL" ;
+    sp500-ont:tieneCEO sp500-data:Mr_Daniel_Paul_Amos ;
+    sp500-ont:tieneReporte sp500-data:Report_AFL_2024-12-31 .
+
+sp500-data:AMD a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "410449608704"^^xsd:long ;
+    sp500-ont:ciudad "Santa Clara"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "Advanced Micro Devices"@en ;
+    sp500-ont:numeroEmpleados 28000 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Information_Technology ;
+    sp500-ont:ratioPER 151.4491 ;
+    sp500-ont:resumenEmpresarial "Advanced Micro Devices, Inc. operates as a semiconductor company worldwide. It operates in three segments: Data Center, Client and Gaming, and Embedded. The company offers artificial intelligence (AI) accelerators, x86 microprocessors, and graphics processing units (GPUs) as standalone devices or as incorporated into accelerated processing units, chipsets, and data center and professional GPUs; and embedded processors and semi-custom system-on-chip (SoC) products, microprocessor and SoC development services and technology, data processing units, field programmable gate arrays (FPGA), system on modules, smart network interface cards, and adaptive SoC products. It provides processors under the AMD Ryzen, AMD Ryzen AI, AMD Ryzen PRO, AMD Ryzen Threadripper, AMD Ryzen Threadripper PRO, AMD Athlon, and AMD PRO A-Series brands; graphics under the AMD Radeon graphics and AMD Embedded Radeon graphics; professional graphics under the AMD Radeon Pro graphics brand; and AI and general-purpose compute infrastructure for hyperscale providers. The company offers data center graphics under the AMD Instinct accelerators and Radeon PRO V-series brands; server microprocessors under the AMD EPYC brand; low power solutions under the AMD Athlon, AMD Geode, AMD Ryzen, AMD EPYC, and AMD R-Series and G-Series brands; FPGA products under the Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6, and Spartan-7 brands; adaptive SOCs under the Zynq-7000, Zynq UltraScale+ MPSoC, Zynq UltraScale+ RFSoCs, Versal HBM, Versal Premium, Versal Prime, Versal AI Core, Versal AI Edge, Vitis, and Vivado brands; and compute and network acceleration board products under the Alveo and Pensando brands. It serves original equipment and design manufacturers, public cloud service providers, system integrators, distributors, and add-in-board manufacturers. The company was incorporated in 1969 and is headquartered in Santa Clara, California."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.amd.com> ;
+    sp500-ont:tickerSymbol "AMD" ;
+    sp500-ont:tieneCEO sp500-data:Dr_Lisa_T_Su_PhD ;
+    sp500-ont:tieneReporte sp500-data:Report_AMD_2024-12-31 .
+
+sp500-data:AOS a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "9654928384"^^xsd:long ;
+    sp500-ont:ciudad "Milwaukee"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "A. O. Smith"@en ;
+    sp500-ont:numeroEmpleados 12700 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Industrials ;
+    sp500-ont:ratioPER 19.1922 ;
+    sp500-ont:rentabilidadDividendo 200.0 ;
+    sp500-ont:resumenEmpresarial "A. O. Smith Corporation manufactures and markets residential and commercial gas and electric water heaters, boilers, heat pumps, tanks, and water treatment products in North America, China, Europe, and India. The company offers water heaters for residences, restaurants, hotels, office buildings, laundries, car washes, and small businesses; boilers for hospitals, schools, hotels, and other large commercial buildings, as well as homes, apartments, and condominiums; and water treatment products comprising point-of-entry water softeners, well water solutions, and whole-home water filtration products, and point-of-use carbon and reverse osmosis products for residences, restaurants, hotels, and offices. It also provides commercial water treatment and filtration products; expansion tanks, commercial solar water heating systems, swimming pool and spa heaters, and related products and parts; and electric wall-hung, gas tankless, combi-boiler, and heat pump and solar water heaters. The company offers its products under the A. O. Smith, State, Lochinvar, Hague, Water-Right, Master Water, Atlantic Filter, and Water Tec brands. It distributes its products through independent wholesale plumbing distributors, as well as to retail channels consisting of hardware and home center chains, and manufacturer representative firms; and offers Aquasana branded products directly to consumers through e-commerce channels. A. O. Smith Corporation was founded in 1874 and is headquartered in Milwaukee, Wisconsin."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.aosmith.com> ;
+    sp500-ont:tickerSymbol "AOS" ;
+    sp500-ont:tieneCEO sp500-data:Mr_Kevin_J_Wheeler ;
+    sp500-ont:tieneReporte sp500-data:Report_AOS_2024-12-31 .
+
+sp500-data:Dr_Lisa_T_Su_PhD a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Dr. Lisa T. Su Ph.D." .
+
+sp500-data:Financials a sp500-ont:SectorEconómico ;
+    rdfs:label "Financials" ;
+    sp500-ont:esSensibleA sp500-data:FEDFUNDS .
+
+sp500-data:MMM a sp500-ont:Compañía ;
+    sp500-ont:capitalizacionMercado "89511419904"^^xsd:long ;
+    sp500-ont:ciudad "Saint Paul"^^xsd:string ;
+    sp500-ont:esConstituyenteDe sp500-data:SP500 ;
+    sp500-ont:nombreOficial "3M"@en ;
+    sp500-ont:numeroEmpleados 61500 ;
+    sp500-ont:pais "United States"^^xsd:string ;
+    sp500-ont:perteneceAlSector sp500-data:Industrials ;
+    sp500-ont:ratioPER 26.874 ;
+    sp500-ont:rentabilidadDividendo 173.0 ;
+    sp500-ont:resumenEmpresarial "3M Company provides diversified technology services in the Americas, the Asia Pacific, Europe, the Middle East, Africa, and internationally. It operates through three segments: Safety and Industrial, Transportation and Electronics, and Consumer. The Safety and Industrial segment offers industrial abrasives and finishing for metalworking applications; autobody repair solutions; industrial specialty products, such as personal hygiene products, masking, and packaging materials; electrical products and materials for construction and maintenance, power distribution, and electrical original equipment manufacturers; structural adhesives and tapes; respiratory, hearing, eye, and fall protection solutions; and mineral granules for shingles. The Transportation and Electronics segment provides ceramic solutions; attachment/bonding, films, sound, and temperature management for transportation vehicles; format graphic films for advertising and fleet signage; reflective signage for highway and vehicle safety; light management films and electronics assembly solutions; chip packaging and interconnection solutions; semiconductor production materials; and data center solutions. The Consumer segment offers cleaning products for the home; consumer air quality products; picture hanging accessories; retail abrasives, paint accessories, and safety products; stationery and office products; automotive appearance products; and consumer bandages, tapes, braces, and supports. The company offers its products through e-commerce and traditional wholesalers, retailers, jobbers, distributors, and dealers, as well as directly to users. 3M Company was founded in 1902 and is headquartered in Saint Paul, Minnesota."^^xsd:string ;
+    sp500-ont:sitioWeb <https://www.3m.com> ;
+    sp500-ont:tickerSymbol "MMM" ;
+    sp500-ont:tieneCEO sp500-data:Mr_William_M_Brown ;
+    sp500-ont:tieneReporte sp500-data:Report_MMM_2024-12-31 .
+
+sp500-data:Mr_Andres_Ricardo_Gluski_Weilert_PhD a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Mr. Andres Ricardo Gluski Weilert Ph.D." .
+
+sp500-data:Mr_Daniel_Paul_Amos a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Mr. Daniel Paul Amos" .
+
+sp500-data:Mr_Kevin_J_Wheeler a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Mr. Kevin J. Wheeler" .
+
+sp500-data:Mr_Padraig__McDonnell a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Mr. Padraig  McDonnell" .
+
+sp500-data:Mr_Robert_A_Michael_CPA a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Mr. Robert A. Michael CPA" .
+
+sp500-data:Mr_Robert_B_Ford a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Mr. Robert B. Ford" .
+
+sp500-data:Mr_Shantanu__Narayen a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Mr. Shantanu  Narayen" .
+
+sp500-data:Mr_William_M_Brown a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Mr. William M. Brown" .
+
+sp500-data:Ms_Julie_T_Spellman_Sweet_JD a sp500-ont:Ejecutivo ;
+    sp500-ont:nombreOficial "Ms. Julie T. Spellman Sweet J.D." .
+
+sp500-data:Report_ABBV_2024-12-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "135161000000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "39430000000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "4278000000.0"^^xsd:long ;
+    sp500-ont:ebit "6524000000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-12-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "56334000000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:ABBV .
+
+sp500-data:Report_ABT_2024-12-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "81414000000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "23244000000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "13402000000.0"^^xsd:long ;
+    sp500-ont:ebit "7572000000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-12-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "41950000000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:ABT .
+
+sp500-data:Report_ACN_2024-08-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "55932363000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "21162317000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "7264787000.0"^^xsd:long ;
+    sp500-ont:ebit "9758292000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-08-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "64896464000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:ACN .
+
+sp500-data:Report_ADBE_2024-11-30 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "30230000000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "19147000000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "5560000000.0"^^xsd:long ;
+    sp500-ont:ebit "7100000000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-11-30"^^xsd:date ;
+    sp500-ont:ingresosTotales "21505000000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:ADBE .
+
+sp500-data:Report_AES_2024-12-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "47406000000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "2314000000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "1679000000.0"^^xsd:long ;
+    sp500-ont:ebit "2379000000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-12-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "12278000000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:AES .
+
+sp500-data:Report_AFL_2024-12-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "117566000000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "5443000000.0"^^xsd:long ;
+    sp500-ont:ebit "6614000000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-12-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "19128000000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:AFL .
+
+sp500-data:Report_AMD_2024-12-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "69226000000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "12725000000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "1641000000.0"^^xsd:long ;
+    sp500-ont:ebit "2081000000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-12-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "25785000000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:AMD .
+
+sp500-data:Report_AOS_2024-12-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "3240000000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "1456100000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "533600000.0"^^xsd:long ;
+    sp500-ont:ebit "707700000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-12-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "3818100000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:AOS .
+
+sp500-data:Report_A_2024-10-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "11846000000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "3535000000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "1289000000.0"^^xsd:long ;
+    sp500-ont:ebit "1617000000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-10-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "6510000000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:A .
+
+sp500-data:Report_MMM_2024-12-31 a sp500-ont:ReporteFinanciero ;
+    sp500-ont:activosTotales "39868000000.0"^^xsd:long ;
+    sp500-ont:beneficioBruto "10128000000.0"^^xsd:long ;
+    sp500-ont:beneficioNeto "4173000000.0"^^xsd:long ;
+    sp500-ont:ebit "6010000000.0"^^xsd:long ;
+    sp500-ont:esDeTipo "Annual"@en ;
+    sp500-ont:fechaReporte "2024-12-31"^^xsd:date ;
+    sp500-ont:ingresosTotales "24575000000.0"^^xsd:long ;
+    sp500-ont:reporteDe sp500-data:MMM .
+
+sp500-data:Utilities a sp500-ont:SectorEconómico ;
+    rdfs:label "Utilities" .
+
+sp500-ont:tieneReporte a owl:ObjectProperty ;
+    rdfs:label "tiene reporte" ;
+    rdfs:domain sp500-ont:Compañía ;
+    rdfs:range sp500-ont:ReporteFinanciero .
+
+sp500-data:FEDFUNDS a sp500-ont:IndicadorMacroeconómico ;
+    rdfs:label "Tasa_Interes_Federal" ;
+    sp500-ont:fecha "2025-09-01"^^xsd:date ;
+    sp500-ont:valor 4.22 .
+
+sp500-data:Industrials a sp500-ont:SectorEconómico ;
+    rdfs:label "Industrials" .
+
+sp500-ont:ÍndiceBursátil a owl:Class ;
+    rdfs:label "Índice Bursátil" .
+
+sp500-data:Health_Care a sp500-ont:SectorEconómico ;
+    rdfs:label "Health Care" .
+
+sp500-data:Information_Technology a sp500-ont:SectorEconómico ;
+    rdfs:label "Information Technology" ;
+    sp500-ont:esSensibleA sp500-data:FEDFUNDS .
+
+sp500-ont:IndicadorMacroeconómico a owl:Class ;
+    rdfs:label "Indicador Macroeconómico" .
+
+sp500-ont:SectorEconómico a owl:Class ;
+    rdfs:label "Sector Económico" .
+
+sp500-data:SP500 a sp500-ont:ÍndiceBursátil ;
+    rdfs:label "S&P 500 Index"@en .
+
+sp500-ont:Ejecutivo a owl:Class ;
+    rdfs:label "Ejecutivo" .
+
+sp500-ont:ReporteFinanciero a owl:Class ;
+    rdfs:label "Reporte Financiero" .
+
+sp500-ont:Compañía a owl:Class ;
+    rdfs:label "Compañía" .
+
